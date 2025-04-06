@@ -18,3 +18,15 @@ stages:
     outs:
       - data/interim/train.csv
       - data/interim/test.csv
+
+  date_preprocess_and_model_training:
+    cmd: python src/data_preprocessing_and_model_building.py
+    params:
+      - Data_preprocess_and_model_training.n_estimators
+      - Data_preprocess_and_model_training.learning_rate
+      - Data_preprocess_and_model_training.max_depth
+    deps:
+      - data/interim/train.csv
+      - src/data_preprocessing_and_model_building.py
+    outs:
+      - models/model.joblib

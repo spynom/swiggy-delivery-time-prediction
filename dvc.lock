@@ -40,3 +40,24 @@ stages:
       hash: md5
       md5: 8ec11a7d6caa8a45f0fe85db5fc95a95
       size: 3413197
+  date_preprocess_and_model_training:
+    cmd: python src/data_preprocessing_and_model_building.py
+    deps:
+    - path: data/interim/train.csv
+      hash: md5
+      md5: 8ec11a7d6caa8a45f0fe85db5fc95a95
+      size: 3413197
+    - path: src/data_preprocessing_and_model_building.py
+      hash: md5
+      md5: 5c14dd8de9fb1452012ca6030c6296bd
+      size: 3901
+    params:
+      params.yaml:
+        Data_preprocess_and_model_training.learning_rate: 0.217621004466002
+        Data_preprocess_and_model_training.max_depth: 18
+        Data_preprocess_and_model_training.n_estimators: 44
+    outs:
+    - path: models/model.joblib
+      hash: md5
+      md5: e6f86644c6c619f7f00b952a542d9ff4
+      size: 144865
