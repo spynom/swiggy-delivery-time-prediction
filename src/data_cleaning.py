@@ -2,11 +2,8 @@ from pathlib import Path
 import pandas as pd
 import numpy as np
 from loguru import logger
-from tqdm import tqdm
-import typer
 import sys
 
-app = typer.Typer()
 
 
 
@@ -205,7 +202,7 @@ def perform_data_cleaning(data: pd.DataFrame, saved_data_path="swiggy_cleaned.cs
 def save_data(data: pd.DataFrame):
     path = Path("data")/"cleaned"/"swiggy_cleaned.csv"
     data.to_csv(path,index=False)
-@app.command()
+
 def main():
     logger.info("extracting raw data")
     raw_data = get_raw_data()
@@ -234,4 +231,4 @@ if __name__ == "__main__":
         level="INFO",
         colorize=True
     )
-    app()
+    main()
