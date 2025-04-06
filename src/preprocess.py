@@ -190,10 +190,20 @@ def perform_data_cleaning(data: pd.DataFrame, saved_data_path="swiggy_cleaned.cs
         .pipe(clean_lat_long)
         .pipe(calculate_haversine_distance)
         .pipe(create_distance_type)
+        .drop(columns=['rider_id',
+                    'restaurant_latitude',
+                    'restaurant_longitude',
+                    'delivery_latitude',
+                    'delivery_longitude',
+                    'order_date',
+                    "order_time_hour",
+                    "order_day",
+                    "order_day_of_week",
+                    "city_name"])
     )
 
 def save_data(data: pd.DataFrame):
-    path = Path("data")/"processed"/"swiggy.csv"
+    path = Path("data")/"processed"/"swiggy_cleaned.csv"
     data.to_csv(path,index=False)
 @app.command()
 def main():
