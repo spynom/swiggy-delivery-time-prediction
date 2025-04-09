@@ -3,6 +3,8 @@ import mlflow
 import os
 import warnings
 from dotenv import load_dotenv
+from loguru import logger
+import sys
 
 # Suppress Pydantic deprecation warnings
 warnings.filterwarnings("ignore", category=DeprecationWarning)
@@ -11,7 +13,16 @@ load_dotenv()
 DAGSHUB_USERNAME = os.getenv("DAGSHUB_USERNAME")
 DAGSHUB_PASSWORD = os.getenv("DAGSHUB_PASSWORD")
 
+# Remove default logger to apply custom format
+logger.remove()
 
+# Log to the console (terminal)
+logger.add(
+    sys.stderr,  # Standard output (console)
+    format="{time:YYYY-MM-DD HH:mm:ss.SSS} | {level:<8} | model_evaluation:{function}:{line} - {message}",
+    level="INFO",
+    colorize=True
+)
 def test_mlflow_connection():
     """Test DAGsHub MLflow tracking server connection."""
     try:
