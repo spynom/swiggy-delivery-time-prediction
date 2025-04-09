@@ -43,4 +43,4 @@ jobs:
           DAGSHUB_PASSWORD: ${{ secrets.DAGSHUB_PASSWORD }}
 
         run: |
-          pytest -s --log-cli-level=INFO test/test_model_per.py
+          pytest -s --log-cli-level=INFO test/test_model_perf.py
