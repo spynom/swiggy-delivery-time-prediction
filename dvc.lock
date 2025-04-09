@@ -72,6 +72,10 @@ stages:
       hash: md5
       md5: 8ec11a7d6caa8a45f0fe85db5fc95a95
       size: 3413197
+    - path: models/model.joblib
+      hash: md5
+      md5: e6f86644c6c619f7f00b952a542d9ff4
+      size: 144865
     - path: src/evaluate.py
       hash: md5
       md5: e1c701fe4a77f920ecea27c70504b963
@@ -79,5 +83,5 @@ stages:
     outs:
     - path: run_information.json
       hash: md5
-      md5: f3caa02150feb9a281a958043128513f
+      md5: 76b0ddcf660b1413f05a3795ee9cfedf
       size: 216
