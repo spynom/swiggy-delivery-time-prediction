@@ -35,7 +35,7 @@ jobs:
           DAGSHUB_USERNAME: ${{ secrets.DAGSHUB_USERNAME }}
           DAGSHUB_PASSWORD: ${{ secrets.DAGSHUB_PASSWORD }}
         run: |
-          pytest tests/test_model_registry.py
+          pytest test/test_model_registry.py
 
       - name: Test Model Performance
         env:
