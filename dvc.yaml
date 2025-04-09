@@ -30,3 +30,12 @@ stages:
       - src/data_preprocessing_and_model_building.py
     outs:
       - models/model.joblib
+  evaluation:
+    cmd: python src/evaluate.py
+    deps:
+      - src/evaluate.py
+      - data/interim/train.csv
+      - data/interim/test.csv
+      - models/model.joblib
+    outs:
+      - run_information.json

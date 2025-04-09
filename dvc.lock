@@ -49,8 +49,8 @@ stages:
       size: 3413197
     - path: src/data_preprocessing_and_model_building.py
       hash: md5
-      md5: 5c14dd8de9fb1452012ca6030c6296bd
-      size: 3901
+      md5: f79b15c5223b965b567d044920681bd4
+      size: 3762
     params:
       params.yaml:
         Data_preprocess_and_model_training.learning_rate: 0.217621004466002
@@ -61,3 +61,23 @@ stages:
       hash: md5
       md5: e6f86644c6c619f7f00b952a542d9ff4
       size: 144865
+  evaluation:
+    cmd: python src/evaluate.py
+    deps:
+    - path: data/interim/test.csv
+      hash: md5
+      md5: 9e21319e59671cb41dad46790d79126c
+      size: 1137921
+    - path: data/interim/train.csv
+      hash: md5
+      md5: 8ec11a7d6caa8a45f0fe85db5fc95a95
+      size: 3413197
+    - path: src/evaluate.py
+      hash: md5
+      md5: e1c701fe4a77f920ecea27c70504b963
+      size: 5071
+    outs:
+    - path: run_information.json
+      hash: md5
+      md5: f3caa02150feb9a281a958043128513f
+      size: 216
