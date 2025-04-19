@@ -18,7 +18,6 @@ spec:
       containers:
         - name: flaskapp
           image: 445567101004.dkr.ecr.eu-north-1.amazonaws.com/swiggy-delivery-time-prediction:latest
-          imagePullPolicy: Never
           resources:
             limits:
               memory: "512Mi"
