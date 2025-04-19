@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: swiggy-delivery-time-prediction
+  labels:
+    app: swiggy-delivery-time-prediction
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: swiggy-delivery-time-prediction
+  template:
+    metadata:
+      name: swiggy-delivery-time-prediction
+      labels:
+        app: swiggy-delivery-time-prediction
+    spec:
+      containers:
+        - name: flaskapp
+          image: 445567101004.dkr.ecr.eu-north-1.amazonaws.com/swiggy-delivery-time-prediction:latest
+          imagePullPolicy: Never
+          resources:
+            limits:
+              memory: "512Mi"
+              cpu: "500m"
+            requests:
+              memory: "256Mi"
+              cpu: "250m"
+          ports:
+            - containerPort: 8000
+          envFrom:
+            - secretRef:
+                name: dagshub-credentials
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: swiggy-delivery-time-prediction
+spec:
+  type: LoadBalancer
+  selector:
+    app: swiggy-delivery-time-prediction
+  ports:
+    - name: http
+      protocol: TCP
+      port: 8000
+      targetPort: 8000
