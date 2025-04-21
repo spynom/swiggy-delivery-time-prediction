@@ -78,7 +78,7 @@ jobs:
 
       - name: Create Kubernetes Secret
         run: |
-          kubectl create secret generic dagsgub-credentials \
+          kubectl create secret generic dagshub-credentials \
           --from-literal=DAGSHUB_USERNAME=${{ secrets.DAGSHUB_USERNAME }} \
           --from-literal=DAGSHUB_PASSWORD=${{ secrets.DAGSHUB_PASSWORD }} \
           --dry-run=client -o yaml | kubectl apply -f -
